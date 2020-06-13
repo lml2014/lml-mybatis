@@ -5,9 +5,11 @@
 <configuration>
     <settings>
         <setting name="cacheEnabled" value="false"/>
+        <!--指定日志输出-->
         <setting name="logImpl" value="LOG4J2"/>
     </settings>
 
+    <!--别名配置-->
     <typeAliases>
         <package name="com.lml.mybatis.xml.model"/>
     </typeAliases>
@@ -27,6 +29,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/lml/mybatis/xml/mapper/CountryMapper.xml"/>
+<!--        <mapper resource="com/lml/mybatis/xml/mapper/CountryMapper.xml"/>-->
+        <mapper resource="com.lml.mybatis.xml.mapper/CountryMapper.xml"/>
     </mappers>
 </configuration>

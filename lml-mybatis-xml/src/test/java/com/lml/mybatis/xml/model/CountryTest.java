@@ -8,6 +8,6 @@ class CountryTest {
 
     @Test
     void name() {
-        assertNotNull(new Country());
+        assertNotNull(new Country(), "country is not null!");
     }
 }
