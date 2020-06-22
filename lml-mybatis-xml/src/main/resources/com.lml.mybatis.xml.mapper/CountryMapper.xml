@@ -5,12 +5,23 @@
 <!--当前XML的命名空间-->
 <mapper namespace="com.lml.mybatis.xml.mapper.CountryMapper">
 
-    <!--config.xml配置别名之后，此处只要Country，等同于 com.lml.mybatis.xml.model.Country-->
-    <select id="selectAll" resultType="Country">
+    <resultMap id="countryMap" type="com.lml.mybatis.xml.model.Country">
+        <id property="id" column="id"/>
+        <result property="countryName" column="country_name"/>
+        <result property="countryCode" column="country_code"/>
+    </resultMap>
+
+    <!--resultType="Country"  config.xml配置别名之后，此处只要Country，等同于 com.lml.mybatis.xml.model.Country-->
+    <select id="selectAll" resultMap="countryMap">
       select id,country_name, country_code from country
     </select>
 
     <select id="selectById" resultType="Country" parameterType="Long">
         select * from country WHERE id = #{id}
     </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into country (country_name, country_code)
+        values (#{countryName}, #{countryCode})
+    </insert>
 </mapper>

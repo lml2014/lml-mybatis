@@ -29,7 +29,10 @@
     </environments>
 
     <mappers>
+<!--        <package name="com.lml.mybatis.xml.mapper"/>-->
+        <!--        正常使用方式：未调通-->
 <!--        <mapper resource="com/lml/mybatis/xml/mapper/CountryMapper.xml"/>-->
+<!--        单独指定方式：可行-->
         <mapper resource="com.lml.mybatis.xml.mapper/CountryMapper.xml"/>
     </mappers>
 </configuration>

@@ -6,10 +6,10 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.InputStream;
 import java.io.Reader;
 import java.util.List;
 
@@ -46,6 +46,18 @@ class CountryMapperTest {
             sqlSession.selectOne("selectById", 2L);
         } finally {
             sqlSession.close();
+        }
+    }
+
+    @Test
+    void testL1Cache() {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            Country country = session.selectOne("selectById", 1);
+
+            Assertions.assertEquals("CHINA",country.getCountryCode());
+        } finally {
+            session.close();
         }
     }
 }
